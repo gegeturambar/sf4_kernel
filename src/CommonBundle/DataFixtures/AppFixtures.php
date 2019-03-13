@@ -1,8 +1,8 @@
 <?php
 
-namespace App\DataFixtures;
+namespace App\CommonBundle\DataFixtures;
 
-use App\Entity\Direction;
+use App\CommonBundle\Entity\Direction;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 

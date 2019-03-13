@@ -23,7 +23,7 @@ if ($input->hasParameterOption('--no-debug', true)) {
     putenv('APP_DEBUG='.$_SERVER['APP_DEBUG'] = $_ENV['APP_DEBUG'] = '0');
 }
 
-require dirname(__DIR__) . '/config/common/bootstrap.php';
+require dirname(__DIR__) . '/config/gestion/bootstrap.php';
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
@@ -33,13 +33,6 @@ if ($_SERVER['APP_DEBUG']) {
     }
 }
 
-$kernels = [
-    'Gestion' => new \App\GestionKernel($_SERVER['APP_ENV'], $_SERVER['APP_DEBUG']),
-];
-
-foreach ($kernels as $key => $kernel) {
-    $application = new Application($kernel);
-    $application->setAutoExit(false);
-    $io->title($key);
-    $application->run($input, $output);
-}
+$kernel = new \App\GestionKernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
+$application = new Application($kernel);
+$application->run($input);

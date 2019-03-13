@@ -1,11 +1,11 @@
 <?php
 
-namespace App\EventListener;
+namespace App\CommonBundle\EventListener;
 
 
 
 // for Doctrine < 2.4: use Doctrine\ORM\Event\LifecycleEventArgs;
-use App\Entity\Direction;
+use App\CommonBundle\Entity\Direction;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
