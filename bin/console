@@ -23,7 +23,7 @@ if ($input->hasParameterOption('--no-debug', true)) {
     putenv('APP_DEBUG='.$_SERVER['APP_DEBUG'] = $_ENV['APP_DEBUG'] = '0');
 }
 
-require dirname(__DIR__) . '/config/common/bootstrap.php';
+require dirname(__DIR__) . '/config/gestion/bootstrap.php';
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
@@ -32,6 +32,9 @@ if ($_SERVER['APP_DEBUG']) {
         Debug::enable();
     }
 }
+
+$output = new \Symfony\Component\Console\Output\ConsoleOutput();
+$io = new \Symfony\Component\Console\Style\SymfonyStyle($input, $output);
 
 $kernels = [
     'Gestion' => new \App\GestionKernel($_SERVER['APP_ENV'], $_SERVER['APP_DEBUG']),
